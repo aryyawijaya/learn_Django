@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- body html -->
+
+    <h2>Daftar Buku</h2>
+
+    <!-- subtitute variable -->
+    {{title}} <!-- menerima value dari key variable dict di django dan mencetaknya --> <br>
+    <!-- filter -->
+    {{writer | upper}} <br> <!-- lengkapnya ada di dokumentasi django -->
+    <!-- tags -->
+    {% for i in title %} <!-- {&&} -> control flow -->
+        <li>{{i}}</li> <!-- {{a}} -> cetak a -->
+    {% endfor %}
+{% endblock %}

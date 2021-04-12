@@ -8,6 +8,7 @@ def buku(request):
         'Belajar Cara Belajar'
     ]
     penulis = 'Tom Cruise'
+    
     konteks = {
         'title' : judul,
         'writer' : penulis
