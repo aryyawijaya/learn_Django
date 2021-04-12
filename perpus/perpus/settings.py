@@ -55,7 +55,7 @@ ROOT_URLCONF = 'perpus.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'], # directory template html
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
