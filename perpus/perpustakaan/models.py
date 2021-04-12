@@ -7,7 +7,7 @@ class Kategori(models.Model):
     keterangan = models.TextField()
 
     def __str__(self):
-        return self.nama
+        return self.nama # yang merepresentasikan model Kategori
 
 
 class Buku(models.Model):
