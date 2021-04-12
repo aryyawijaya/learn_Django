@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from perpustakaan.models import Buku
+from perpustakaan.forms import FormBuku
 
 def buku(request):
     # subtitute variable
@@ -19,3 +20,11 @@ def penerbit(request):
     return render(request, 'penerbit.html', konteks)
 
 # client --> urls --> view --> model --> view --> templates --> client
+
+def tambahBuku(request):
+    form = FormBuku()
+
+    konteks = {
+        'form' : form,
+    }
+    return render(request, 'tambah-buku.html', konteks)
