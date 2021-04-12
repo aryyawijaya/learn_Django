@@ -1,18 +1,21 @@
 from django.shortcuts import render
+from perpustakaan.models import Buku
 
 def buku(request):
     # subtitute variable
-    judul = [
-        'Belajar Django', 
-        'Belajar REST API', 
-        'Belajar Cara Belajar'
-    ]
-    penulis = 'Tom Cruise'
+    books = Buku.objects.all() 
+    # ORM (Object-Relational Mapping) --> mengambil model tampa query sql
     
     konteks = {
-        'title' : judul,
-        'writer' : penulis
+        'Buku' : books
     }
     return render(request, 'buku.html', konteks)
 def penerbit(request):
-    return render(request, 'penerbit.html')
+    books = Buku.objects.all()
+
+    konteks = {
+        'Buku' : books
+    }
+    return render(request, 'penerbit.html', konteks)
+
+# client --> urls --> view --> model --> view --> templates --> client

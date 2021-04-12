@@ -6,11 +6,19 @@
     <h2>Daftar Buku</h2>
 
     <!-- subtitute variable -->
-    {{title}} <!-- menerima value dari key variable dict di django dan mencetaknya --> <br>
+    <!-- {{title}}  -->
+    <!-- menerima value dari key variable dict di django dan mencetaknya --> <br>
     <!-- filter -->
-    {{writer | upper}} <br> <!-- lengkapnya ada di dokumentasi django -->
+    <!-- {{writer | upper}} <br>  -->
+    <!-- lengkapnya ada di dokumentasi django -->
     <!-- tags -->
-    {% for i in title %} <!-- {&&} -> control flow -->
-        <li>{{i}}</li> <!-- {{a}} -> cetak a -->
+    <!-- {% for i in title %}  -->
+    <!-- {&&} -> control flow -->
+        <!-- <li>{{i}}</li>  -->
+        <!-- {{a}} -> cetak a -->
+    <!-- {% endfor %} -->
+
+    {% for i in Buku %}
+        <li>{{i.judul}}</li>
     {% endfor %}
 {% endblock %}
