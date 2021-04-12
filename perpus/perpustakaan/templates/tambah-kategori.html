@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if pesan %}
+    <div class="alert">{{ pesan }}</div>
+{% endif %}
+
+<form action="/tambah-kategori/" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button>Tambah Kategori</button>
+
+</form>
+
+{% endblock %}

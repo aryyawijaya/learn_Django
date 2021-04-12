@@ -2,14 +2,21 @@
 
 {% block content %}
 
-<h1></h1>
+{% if pesan %}
+    <div class="alert alert-success">{{ pesan }}</div>
+{% endif %}
 
-<form action="" method="post">
+<form action="/tambah-buku/" method="post">
+    {% csrf_token %}
+    <!-- protect data inputan -->
+
     {{ form.as_p }}
     <!-- form sebagai paragraf -->
 
     <button>Tambah Buku</button>
 
 </form>
+
+<!-- input -> button tambah buku -> url tambah-buku -> view (ngirim data ke database) -->
 
 {% endblock %}

@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from perpustakaan.views import buku, penerbit, tambahBuku
+from perpustakaan.views import buku, penerbit, tambahBuku, tambahKategori
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('buku/', buku), # buku/ --> urlnya, buku --> view/method
     path('penerbit/', penerbit),
-    path('tambah-buku/', tambahBuku)
+    path('tambah-buku/', tambahBuku),
+    path('tambah-kategori/', tambahKategori)
 ]
