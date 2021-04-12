@@ -16,6 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+# view/method sementara --> harusnya di apps
+from django.http import HttpResponse
+def buku(request):
+    return HttpResponse('Halaman Buku')
+def penulis(request):
+    return HttpResponse('Halaman Penulis')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('buku/', buku), # buku/ --> urlnya, buku --> view/method
+    path('penulis/', penulis)
 ]
