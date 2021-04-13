@@ -3,6 +3,13 @@ from perpustakaan.models import Buku
 from perpustakaan.forms import FormBuku, FormKategori
 from django.contrib import messages
 
+def hapusBuku(request, id_buku):
+    buku = Buku.objects.filter(id=id_buku)
+    buku.delete()
+    messages.success(request, 'Data berhasil dihapus.')
+
+    return redirect('buku')
+
 def ubahBuku(request, id_buku):
     buku = Buku.objects.get(id=id_buku)
     template = 'ubah-buku.html'

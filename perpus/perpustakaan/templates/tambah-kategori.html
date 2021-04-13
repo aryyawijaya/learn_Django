@@ -9,7 +9,7 @@
                 <div class="alert alert-success">{{ pesan }}</div>
             {% endif %}
 
-            <form action="/tambah-kategori/" method="post">
+            <form action="{% url 'tambah_kategori' %}" method="post">
                 {% csrf_token %}
 
                 {{ form.as_p }}
