@@ -4,8 +4,19 @@ from perpustakaan.forms import FormBuku, FormKategori
 
 def buku(request):
     # subtitute variable
-    books = Buku.objects.all() 
+    books = Buku.objects.all()
     # ORM (Object-Relational Mapping) --> mengambil model tampa query sql
+
+    # FILTER table
+
+    # select * form Buku where penerbit=Gramedia
+    # books = Buku.objects.filter(penerbit='Gramedia')
+
+    # filter pakai foreign key
+    # books = Buku.objects.filter(kategori_id__nama='Novel') # inner join di django (ORM)
+
+    # limit data yang ditampilkan
+    # books = Buku.objects.filter()[:3]
     
     konteks = {
         'Buku' : books

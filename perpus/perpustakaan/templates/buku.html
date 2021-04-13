@@ -1,24 +1,56 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <!-- body html -->
+<!-- body html -->
 
-    <h2>Daftar Buku</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <!-- field yg akan ditampilkan -->
+                        <th>JUDUL</th>
+                        <th>PENULIS</th>
+                        <th>PENERBIT</th>
+                        <th>JUMLAH</th>
+                        <th>KATEGORI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in Buku %}
+                    <tr>
+                        <td>{{ i.judul }}</td>
+                        <td>{{ i.penulis }}</td>
+                        <td>{{ i.penerbit }}</td>
+                        <td>{{ i.jumlah }}</td>
+                        <td>{{ i.kategori_id }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    
 
-    <!-- subtitute variable -->
-    <!-- {{title}}  -->
-    <!-- menerima value dari key variable dict di django dan mencetaknya --> <br>
-    <!-- filter -->
-    <!-- {{writer | upper}} <br>  -->
-    <!-- lengkapnya ada di dokumentasi django -->
-    <!-- tags -->
-    <!-- {% for i in title %}  -->
-    <!-- {&&} -> control flow -->
-        <!-- <li>{{i}}</li>  -->
-        <!-- {{a}} -> cetak a -->
-    <!-- {% endfor %} -->
+<!-- <h2>Daftar Buku</h2> -->
 
-    {% for i in Buku %}
-        <li>{{i.judul}}</li>
-    {% endfor %}
+<!-- subtitute variable -->
+<!-- {{title}}  -->
+<!-- menerima value dari key variable dict di django dan mencetaknya --> <br>
+<!-- filter -->
+<!-- {{writer | upper}} <br>  -->
+<!-- lengkapnya ada di dokumentasi django -->
+<!-- tags -->
+<!-- {% for i in title %}  -->
+<!-- {&&} -> control flow -->
+    <!-- <li>{{i}}</li>  -->
+    <!-- {{a}} -> cetak a -->
+<!-- {% endfor %} -->
+
+<!-- {% for i in Buku %} -->
+    <!-- <li>{{i.judul}}</li> -->
+<!-- {% endfor %} -->
+
 {% endblock %}
