@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from perpustakaan.models import Buku
 from perpustakaan.forms import FormBuku, FormKategori
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
+@login_required(login_url=settings.LOGIN_URL)
 def hapusBuku(request, id_buku):
     buku = Buku.objects.filter(id=id_buku)
     buku.delete()
@@ -10,6 +13,7 @@ def hapusBuku(request, id_buku):
 
     return redirect('buku')
 
+@login_required(login_url=settings.LOGIN_URL)
 def ubahBuku(request, id_buku):
     buku = Buku.objects.get(id=id_buku)
     template = 'ubah-buku.html'
@@ -29,6 +33,7 @@ def ubahBuku(request, id_buku):
         }
     return render(request, template, konteks)
 
+@login_required(login_url=settings.LOGIN_URL)
 def buku(request):
     # subtitute variable
     books = Buku.objects.all()
@@ -49,6 +54,8 @@ def buku(request):
         'Buku' : books
     }
     return render(request, 'buku.html', konteks)
+
+@login_required(login_url=settings.LOGIN_URL)
 def penerbit(request):
     books = Buku.objects.all()
 
@@ -59,6 +66,7 @@ def penerbit(request):
 
 # client --> urls --> view --> model --> view --> templates --> client
 
+@login_required(login_url=settings.LOGIN_URL)
 def tambahBuku(request):
     if request.POST: # jika ada data yg dikirim menggunakan method POST maka
         form = FormBuku(request.POST) # form dengan data inputan
@@ -81,6 +89,7 @@ def tambahBuku(request):
         }
     return render(request, 'tambah-buku.html', konteks)
 
+@login_required(login_url=settings.LOGIN_URL)
 def tambahKategori(request):
     if request.POST:
         form = FormKategori(request.POST)

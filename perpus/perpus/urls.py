@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from perpustakaan.views import buku, penerbit, tambahBuku, tambahKategori, ubahBuku, hapusBuku
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,6 @@ urlpatterns = [
     path('tambah/kategori/', tambahKategori, name='tambah_kategori'),
     path('buku/ubah/<int:id_buku>', ubahBuku, name='ubah_buku'), # urlnya dikasih name biar kalau mau ada ubah pola url, di views dan templatenya gausah diganti
     path('buku/hapus/<int:id_buku>', hapusBuku, name='hapus_buku'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
 ]

@@ -132,3 +132,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# setelah login akan diarahkan ke url apa
+LOGIN_REDIRECT_URL = 'buku'
+
+# setting utk memaksa user login dahulu sebelum ke url lainnya
+LOGIN_URL = 'login'
