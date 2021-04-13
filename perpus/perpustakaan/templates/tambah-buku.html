@@ -16,7 +16,12 @@
                 {{ form.as_p }}
                 <!-- form sebagai paragraf -->
 
+                <!-- button tambah kategori -->
+                <a href="{% url 'tambah_kategori' %}" class='btn btn-primary'>Tambah Kategori</a> <br><br>
+                
                 <button class="btn btn-primary">Tambah Buku</button>
+
+                <a href="{% url 'buku' %}" class='btn btn-danger'>Kembali</a>
 
             </form>
         </div>

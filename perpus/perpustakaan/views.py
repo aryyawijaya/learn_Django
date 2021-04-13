@@ -1,6 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from perpustakaan.models import Buku
 from perpustakaan.forms import FormBuku, FormKategori
+from django.contrib import messages
+
+def ubahBuku(request, id_buku):
+    buku = Buku.objects.get(id=id_buku)
+    template = 'ubah-buku.html'
+
+    if request.POST:
+        form = FormBuku(request.POST, instance=buku) # form berisi data buku tertentu
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Data berhasil diperbaharui.')
+            # setelah berhasil, akan di redirect ke url ubah_buku lagi
+            return redirect('ubah_buku', id_buku=id_buku)
+    else:
+        form = FormBuku(instance=buku)
+        konteks = {
+            'form': form,
+            'buku': buku,
+        }
+    return render(request, template, konteks)
 
 def buku(request):
     # subtitute variable

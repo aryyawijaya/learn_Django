@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- form nya sama kayak tambah-buku -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+            <h3>Ubah: {{ buku.judul }}</h3>
+
+            {% for i in messages %}
+                {% if i %}
+                    <div class="alert alert-success">{{ i }}</div>
+                {% endif %}
+            {% endfor %}
+
+            <form action="{% url 'ubah_buku' buku.id %}" method="post">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button class="btn btn-primary">Simpan Perubahan</button>
+
+                <!-- button utk kembali ke url buku -->
+                <a href="{% url 'buku' %}" class="btn btn-danger">Kembali</a>
+                
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- input -> button tambah buku -> url tambah-buku -> view (ngirim data ke database) -->
+
+{% endblock %}
