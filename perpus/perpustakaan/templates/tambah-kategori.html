@@ -2,17 +2,23 @@
 
 {% block content %}
 
-{% if pesan %}
-    <div class="alert">{{ pesan }}</div>
-{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% if pesan %}
+                <div class="alert alert-success">{{ pesan }}</div>
+            {% endif %}
 
-<form action="/tambah-kategori/" method="post">
-    {% csrf_token %}
+            <form action="/tambah-kategori/" method="post">
+                {% csrf_token %}
 
-    {{ form.as_p }}
+                {{ form.as_p }}
 
-    <button>Tambah Kategori</button>
+                <button class='btn btn-primary'>Tambah Kategori</button>
 
-</form>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

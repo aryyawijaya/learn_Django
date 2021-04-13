@@ -2,20 +2,26 @@
 
 {% block content %}
 
-{% if pesan %}
-    <div class="alert alert-success">{{ pesan }}</div>
-{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% if pesan %}
+                <div class="alert alert-success">{{ pesan }}</div>
+            {% endif %}
 
-<form action="/tambah-buku/" method="post">
-    {% csrf_token %}
-    <!-- protect data inputan -->
+            <form action="/tambah-buku/" method="post">
+                {% csrf_token %}
+                <!-- protect data inputan -->
 
-    {{ form.as_p }}
-    <!-- form sebagai paragraf -->
+                {{ form.as_p }}
+                <!-- form sebagai paragraf -->
 
-    <button>Tambah Buku</button>
+                <button class="btn btn-primary">Tambah Buku</button>
 
-</form>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- input -> button tambah buku -> url tambah-buku -> view (ngirim data ke database) -->
 
