@@ -14,11 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from perpustakaan.views import buku, penerbit, tambahBuku, tambahKategori, ubahBuku, hapusBuku
 from django.contrib.auth.views import LoginView, LogoutView
+from rest_framework import routers
+from perpustakaan.viewset_api import BukuViewSet
+
+router = routers.DefaultRouter()
+router.register('buku', BukuViewSet)
 
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('buku/', buku, name='buku'), # buku/ --> urlnya, buku --> view/method
     path('penerbit/', penerbit),
