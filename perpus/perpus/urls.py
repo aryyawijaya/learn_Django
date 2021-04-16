@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from perpustakaan.views import buku, penerbit, tambahBuku, tambahKategori, ubahBuku, hapusBuku
+from perpustakaan.views import buku, penerbit, tambahBuku, tambahKategori, ubahBuku, hapusBuku, signup
 from django.contrib.auth.views import LoginView, LogoutView
 from rest_framework import routers
-from perpustakaan.viewset_api import BukuViewSet
+from perpustakaan.viewset_api import BukuViewSet, KategoriViewSet
 
 router = routers.DefaultRouter()
 router.register('buku', BukuViewSet)
+router.register('kategori', KategoriViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
@@ -34,4 +35,5 @@ urlpatterns = [
     path('buku/hapus/<int:id_buku>', hapusBuku, name='hapus_buku'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    path('signup/', signup, name='signup'),
 ]

@@ -4,7 +4,26 @@ from perpustakaan.forms import FormBuku, FormKategori
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.contrib.auth.forms import UserCreationForm
 
+@login_required(login_url=settings.LOGIN_URL) # hanya yg bisa login yg bisa membuat user baru
+# tambah user di sini tidak sebagai superuser, jadi tidak bisa login ke django admin
+def signup(request):
+    if request.POST:
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'User berhasil dibuat.')
+            return redirect('signup')
+        else:
+            messages.error(request, 'Terjadi kesalahan.')
+            return redirect('signup')
+    else:
+        form = UserCreationForm()
+        konteks = {
+            'form': form
+        }
+        return render(request, 'signup.html', konteks)
 @login_required(login_url=settings.LOGIN_URL)
 def hapusBuku(request, id_buku):
     buku = Buku.objects.filter(id=id_buku)

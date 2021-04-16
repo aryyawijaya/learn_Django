@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Sign Up
+                </div>
+                <div class="card-body">
+                    {% for i in messages %}
+                        {% if i.tags == 'success' %}
+                            <div class="alert alert-success">{{ i }}</div>
+                        {% else %}
+                            <div class="alert alert-danger">{{ i }}</div>
+                        {% endif %}
+                    {% endfor%}
+                    <form action="{% url 'signup' %}" method="post">
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+
+                        <button class='btn btn-primary'>Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

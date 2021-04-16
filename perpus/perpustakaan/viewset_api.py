@@ -1,5 +1,5 @@
-from perpustakaan.models import Buku
-from perpustakaan.serializers import BukuSerializer
+from perpustakaan.models import Buku, Kategori
+from perpustakaan.serializers import BukuSerializer, KategoriSerializer
 from rest_framework import viewsets, permissions
 
 class BukuViewSet(viewsets.ModelViewSet):
@@ -7,3 +7,7 @@ class BukuViewSet(viewsets.ModelViewSet):
     queryset = Buku.objects.all()
     serializer_class = BukuSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+class KategoriViewSet(viewsets.ModelViewSet):
+    queryset = Kategori.objects.all()
+    serializer_class = KategoriSerializer
